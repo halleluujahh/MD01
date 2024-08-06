@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let number = prompt("Nhập vào một số nguyên bất kỳ:");
+        while(isNaN(number)){
+            number = prompt("Hãy nhập vào một số nguyên bất kỳ:");
+        }
+        let tinhGiaiThua = function (number){
+            let result = number;
+            if(number == 0){
+                alert(`Giai thừa của ${number} là 1`);
+            }else{
+                for (let i = number-1; i > 0; i--) {
+                    result *= i;
+                }
+                alert(`Giai thừa của ${number} là ${result}`);
+            }
+        }
+        tinhGiaiThua(number);
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let inputS = prompt("Nhập vào chuỗi kí tự:");
+        while(inputS.length==0){
+            inputS = prompt("Hãy nhập vào chuỗi kí tự:");
+        }
+        inputA = inputS.split("");
+        function kiemTraTanSuat(array){
+            let count = 0;
+            for (let i = 0; i < array.length; i++) {
+                count = 0;
+                for(let j = i; j< array.length; j++){
+                    if(array[i] == array[j]){
+                        count++;
+                        if(j>i){
+                            array.splice(j, 1);
+                            j--;
+                        }
+                    }
+                }
+                console.log(`Ký tự ${array[i]} xuất hiện ${count} lần`);
+            }
+        }
+        kiemTraTanSuat(inputA);
+    </script>
+</body>
+</html>

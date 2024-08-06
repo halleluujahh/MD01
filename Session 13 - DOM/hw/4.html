@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div:nth-child(1){
+            text-align: center;
+        }
+        div:nth-child(2){
+            display: flex;
+            justify-content: center;
+        }
+        .direction{
+            top: 4rem;
+            position: relative;
+        }
+        .direction button{
+            padding: 10px;
+            margin: 0px 20px;
+        }
+        img:not(:nth-child(1)){
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <img id="main_img" alt="" width="1000px" height="500px">
+    </div>
+    <div>
+        <div class="direction">
+            <button onclick="preImg()" id="prev"> < </button>
+        </div>
+        <img onclick="changeImg(this)" src="https://images4.alphacoders.com/132/thumbbig-1326359.webp" alt="" width="200px" height="150px">
+        <img onclick="changeImg(this)" src="https://c4.wallpaperflare.com/wallpaper/288/722/467/cyberpunk-edgerunners-lucy-edgerunners-anime-girls-cyberpunk-2077-cyberpunk-hd-wallpaper-preview.jpg" alt="" width="200px" height="150px">
+        <img onclick="changeImg(this)" src="https://c4.wallpaperflare.com/wallpaper/293/1013/173/cyberpunk-edgerunners-lucy-edgerunners-cyberpunk-hd-wallpaper-preview.jpg" alt="" width="200px" height="150px">
+        <img onclick="changeImg(this)" src="https://i.pinimg.com/736x/d6/18/74/d6187427c8de13873541b1e0b15c60ba.jpg" alt="" width="200px" height="150px">
+        <img onclick="changeImg(this)" src="https://c4.wallpaperflare.com/wallpaper/496/435/806/cyberpunk-cyberpunk-edgerunners-hd-wallpaper-preview.jpg" alt="" width="200px" height="150px">
+        <div class="direction">
+            <button onclick="nextImg()" id="next"> > </button>
+        </div>
+    </div>
+    <script>
+        
+        let listImg = document.getElementsByTagName("img");
+        document.getElementById("main_img").src = listImg[1].src;
+        let currentImg = document.getElementById("main_img").src;
+        blurImg();
+        
+        function blurImg(){
+            for (let index = 1; index < listImg.length; index++) {
+                if(listImg[index].src !== document.getElementById("main_img").src){
+                    listImg[index].setAttribute("style","filter: blur(0.1rem)");
+                }else{
+                    listImg[index].setAttribute("style","filter: none");
+                } 
+            }
+        }
+        
+        function changeImg(element){
+            document.getElementById("main_img").src = element.src;
+            blurImg();
+            currentImg = element.src;
+        }
+
+        function nextImg(){
+            for (let index = 1; index < listImg.length; index++) {
+                if(currentImg === listImg[index].src){
+                    document.getElementById("main_img").src = listImg[++index].src;
+                    break;
+                }
+            }
+            blurImg();
+            currentImg = document.getElementById("main_img").src;
+        }
+
+        function preImg(){
+            for (let index = 1; index < listImg.length; index++) {
+                if(currentImg === listImg[index].src){
+                    document.getElementById("main_img").src = listImg[--index].src;
+                    break;
+                }
+            }
+            blurImg();
+            currentImg = document.getElementById("main_img").src;
+        }
+    </script>
+</body>
+</html>

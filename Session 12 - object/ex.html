@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            Tạo 1 mảng cart chứa sản phầm người dùng mua
+            khởi tạo 3 đối tượng sản phầm gồm các thuộc tính name: tên sản phầm,
+            id: mã sản phẩm, price: giá sản phẩm, quantity: số lượng mua
+            sau khi tạo 3 đối tượng push vào mảng cart.
+            // viết hàm:
+            1. In ra tất cả sản phẩm trong giỏ hàng.
+            2. Hàng tìm kiếm sản phẩm theo id
+            - đúng id trả về sản phẩm.
+            - không đúng báo không có.
+            3. Tính giá phải trả.
+        */
+        let cart = [];
+        const sanPham1 = {
+            id:1,
+            name:"San pham 1",
+            quantity:3,
+            price: 10000
+        }
+        const sanPham2 = {
+            id:2,
+            name:"San pham 2",
+            quantity:5,
+            price: 20000
+        }
+        const sanPham3 = {
+            id:3,
+            name:"San pham 3",
+            quantity:10,
+            price: 50000
+        }
+        cart.push(sanPham1,sanPham2,sanPham3);
+        console.log(cart);
+
+        // 1.In sản phẩm trong giỏ
+        function showProductName(){
+            for (let index = 0; index < cart.length; index++) {
+                console.log("id||name||quantity||price");
+                console.log(cart[index].id+"||"+cart[index].name+"||"+cart[index].quantity+"||"+cart[index].price);    
+            }
+        }
+        showProductName();
+
+        // 2.Tìm kiếm sản phẩm theo id
+        function findProductByID(id){
+            let product;
+            for (let index = 0; index < cart.length; index++) {
+                if(id == cart[index].id){
+                    console.log("Sản phẩm đã tìm kiếm: ", cart[index].name);
+                    product=cart[index];
+                    break;
+                }
+            }
+            if(!product){
+                console.log("Không tìm thấy sản phẩm");
+            }
+        }
+        findProductByID(3);
+
+        // 3.Tính giá phải trả
+        function calculateTotalPrice(){
+            let sum = 0;
+            for (let index = 0; index < cart.length; index++) {
+                sum+=cart[index].price;
+            }
+            console.log("Tổng giá sản phẩm: " + sum);
+        }
+        calculateTotalPrice();
+    </script>
+    
+</body>
+</html>

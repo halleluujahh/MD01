@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+         Nhập vào một chuỗi và in ra chuỗi
+         có độ dài lớn nhất với các kí tự 
+         không giống nhau 
+         input: "abcb"
+         output: "abc" 
+        */
+        let input = prompt("Nhập vào một chuỗi");
+        while(input.length==0){
+            input = prompt("Hãy nhập vào một chuỗi");
+        }
+        console.log(input);
+        input = input.trim().split("")
+        let uniqueString = (input) => {
+            let result = [];
+            for(let i = 0; i < input.length; i++){
+                result.push(input[i]);
+                for (let j = i+1; j < input.length; j++){
+                    if(input[i]==input[j]){
+                        input.splice(j,1);
+                        j--;
+                    }
+                }
+            }
+            console.log(result.join(""));
+        }
+        uniqueString(input);
+    </script>
+</body>
+</html>

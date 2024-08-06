@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        localStorage.setItem("name", "minh thu");
+        let name = localStorage.getItem("name");
+        console.log("name", name);
+        localStorage.removeItem("name");
+        let number = [3,4,5];
+        let student = {
+                name: "ha",
+                age: 20
+        }
+        localStorage.setItem("number", JSON.stringify(number));
+        localStorage.setItem("student", JSON.stringify(students));
+        let myArr = JSON.parse(localStorage.getItem("number"));
+        let studentsOb = JSON.parse(localStorage.getItem("student"));
+        console.log(myArr);
+        console.log(studentsOb);
+    </script>
+</body>
+</html>

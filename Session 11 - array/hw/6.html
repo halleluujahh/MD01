@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        Tìm ra số độc nhất và lớn nhất trong mảng 
+        input: [8,8,7,7,6,5]
+        output: 6 
+        */
+        let input = [8,8,7,7,6,5];
+        console.log(input);
+        let maxUnique = (input) => {
+            let result = 0;
+            for(let i = 0; i < input.length; i++){
+                for (let j = 0; j < input.length; j++){
+                    if(input[i]==input[j]&&i!=j){
+                        result = 0;
+                        break;
+                    }else if(result<input[i]){ 
+                        result = input[i];
+                    }
+                }
+            }
+            if(result == 0){
+                console.log("Không có số độc nhất và lớn nhất trong mảng ");
+            }else{
+                console.log(`${result}`);
+            }
+        }
+        maxUnique(input);
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .list{
+            background-color: violet;
+        }
+        .content{
+            color:blue;
+        }
+    </style>
+</head>
+<body>
+    <p id="param" class="heading">lấy element by id</p>
+    <p id="param" class="heading">lấy element by id</p>
+    <div class="query">
+        test query selector
+    </div>
+    <div class="query">
+        test query selector 1
+    </div>
+    <div class="content toggle" id="text">
+        content
+    </div>
+    <button onclick="handleClick()">bấm</button>
+    <div class="text">
+        <h1></h1>
+    </div>
+    <script>
+        // let e = document.getElementById("param");
+        // console.log("get by id", e);
+        // let getElementByClass = document.getElementsByClassName("heading")[0];
+        // console.log("getElementByClass", getElementByClass);
+        // let getEByQuery = document.querySelector(".query div");
+        // console.log(getEByQuery);
+        // let getEByQueryAll = document.querySelectorAll(".query");
+        // console.log(getEByQueryAll[0]);
+        // let content = document.getElementsByClassName("content")[0].setAttribute("class", "content1");
+        // let content = document.getElementsByClassName("content")[0].getAttribute("class");
+        // console.log(content);
+        let classList1 = document.getElementById("text").classList;
+        console.log(classList1);
+        classList1.add("list");
+        classList1.remove("content");
+        let check = classList1.contains("content");
+        console.log(check);
+        let handleClick = () => {
+            classList1.toggle("content");        
+        }
+        document.getElementsByClassName("text")[0].textContent = "thu";
+        document.getElementsByClassName("text")[0].innerHTML = "<h1>thu<h1/>";
+    </script>
+</body>
+</html>

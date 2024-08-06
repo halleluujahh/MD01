@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+            box-sizing: border-box;
+            max-width: 100%;
+            max-height: 100%;
+        }
+        .form_login{
+            margin: 5rem auto;
+            width: 30%;
+            border: 1px solid black;
+            border-radius: 1rem;
+            background-color: rgba(255, 253, 253, 0.804);
+        }
+        h3{
+            text-align: center;
+        }
+        .form_content{
+            width: 90%;
+            padding: 10px;
+            margin: 1rem auto;
+        }
+        label{
+            display: block;
+        }
+        input{
+            width: 100%;
+            padding: 5px;
+            border-radius: 0.2rem;
+        }
+        .form_content:last-child{
+            text-align: center;
+        }
+        button{
+            padding: 5px;
+            width: 5rem;
+        }   
+        a{
+            text-decoration: none;
+            color:black;
+        }     
+    </style>
+</head>
+<body>
+    <div class="form_login">
+        <h3>Form Login</h3>
+        <div class="form_content">
+            <label for="email">Email</label>
+            <input type="email" id="email" required>
+        </div>
+        <div class="form_content">
+            <label for="password">Password</label>
+            <input type="password" id="password" required>
+        </div>
+        <div class="form_content">
+            <button class="btnRegister"><a href="register.html">Register</a></button>
+            <button class="btnLogin" onclick="login()">Login</button>
+        </div>
+    </div>
+    <script>
+        let userList = JSON.parse(localStorage.getItem("users")) || [];
+        function login(){
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            let flag = false;
+
+            if(email.length == 0 || password.length == 0){
+                alert("Không được để trống !!");
+                document.getElementById("email").setAttribute("style", "border: 1px solid red");
+                document.getElementById("password").setAttribute("style", "border: 1px solid red");
+                return;
+            }
+
+            for (let index = 0; index < userList.length; index++) {
+                if(userList[index].email === email && userList[index].password === password){
+                    alert("Login thành công !!");
+                    flag = true;
+                    break;
+                }else if(userList[index].email === email && userList[index].password !== password){
+                    alert("Sai mật khẩu !!");
+                    flag = true;
+                    document.getElementById("password").setAttribute("style", "border: 1px solid red");
+                    break;
+                }
+            }
+            if(flag===false){
+                alert("Tài khoản không tồn tại !!");
+            }
+        }
+    </script>
+</body>
+</html>

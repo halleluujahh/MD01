@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        *{
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+        #list_item{
+            display: flex;
+            justify-content: space-between;
+        }
+        #list{
+            width: 90%;
+            margin: auto;
+        }
+        #percent{
+            font-weight: 700;
+        }
+        .content{
+            width: 40%;
+            margin: auto;
+            border: 1px solid rgb(222, 211, 211);
+            text-align: center;
+            border-radius: 2%;
+            box-shadow: 0.5px 0.5px 1px 1px rgb(196, 190, 190);
+        }
+        #job{
+            width: 70%;
+            margin: 1%;
+            padding: 5px;
+            border:1px solid rgb(0, 110, 255);
+        }
+        .input{
+            width: 90%;
+        }
+        .input #job{
+            width: 70%;
+
+        }
+        #error{
+            width: 100%;
+        }
+        .content .input{
+            margin: auto;
+        }
+        .btnAdd{
+            width: 20%;
+            padding: 5px;
+            color: white;
+            background-color: rgb(27, 119, 249);
+            border:1px solid rgb(0, 110, 255);
+            cursor: pointer;
+        }
+        #error{
+            text-align: start;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div class="content">
+        <h1>Danh sách công việc</h1>
+        <div class="input">
+            <input type="text" id="job"><button class="btnAdd" onclick="add()">Thêm</button>
+            <div id="error"></div>
+        </div>
+        <div id="list">
+    
+        </div>
+        <div id="percent"></div>
+    </div>
+    <script>
+        let listJob = JSON.parse(localStorage.getItem("jobs")) || [];
+        showJob();
+        function add(){
+            let jobValue = document.getElementById("job").value;
+            if(jobValue.length === 0){
+                document.getElementById("error").innerHTML="Tên công việc không được phép để trống";
+                document.getElementById("error").setAttribute("style", "color: red");
+                return;
+            }
+            document.getElementById("error").innerHTML="";
+            let job = {
+                id: Math.floor(Math.random()*9999999),
+                name: jobValue,
+                status: false
+            }
+            
+            listJob.push(job);
+            localStorage.setItem("jobs", JSON.stringify(listJob));
+            showJob();
+            document.getElementById("job").value="";
+        }
+        function showJob(){
+            let text = "";
+            let status = "";
+            let check = "";
+            for (let index = 0; index < listJob.length; index++) {
+                if(listJob[index].status === true){
+                    check = `<input checked style="cursor: pointer;" type="checkbox" onclick="change(${listJob[index].id})">`;
+                    status = `<span><s>${listJob[index].name}</s></span>`; 
+                }else{
+                    check = `<input style="cursor: pointer;" type="checkbox" onclick="change(${listJob[index].id})">`;
+                    status = `<span>${listJob[index].name}</span>`; 
+                }
+                text += `
+                        <div id="list_item">
+                            <div class="item">
+                                ${check}
+                                ${status}
+                            </div>
+                            <div class="item1">
+                                <i class="fa-solid fa-trash" style="color:red;cursor: pointer;" onclick="remove(${listJob[index].id})"></i>
+                            </div>
+                        </div>   
+                        <hr> 
+                        `;
+            }
+            document.getElementById("list").innerHTML = text;
+            calPercent();
+        }
+        function change(id){
+            for (let index = 0; index < listJob.length; index++) {
+                if(id === listJob[index].id){
+                    listJob[index].status = !listJob[index].status;
+                }
+            }
+            localStorage.setItem("jobs", JSON.stringify(listJob));
+            showJob();
+        }
+        function remove(id){
+            for (let index = 0; index < listJob.length; index++) {
+                if(id === listJob[index].id){
+                    let c = confirm("bạn có muốn xóa không ?");
+                    if(c){
+                        listJob.splice(index,1);
+                        break;
+                    }
+                }
+            }
+            localStorage.setItem("jobs", JSON.stringify(listJob));
+            showJob();
+        }
+        function calPercent(){
+            let count = 0;
+            for (let index = 0; index < listJob.length; index++) {
+                if(listJob[index].status === true){
+                    count++;
+                }
+            }
+            let percent = Math.round((count/listJob.length*100));
+            document.getElementById("percent").textContent = "Tiến độ hoàn thành: " + percent +"%";
+        }
+    </script> -->
+
+
+    <input hidden="hidden" id="id" type="text" value="A Long Long Long Long SEX SEX SEX SEX ơi">
+    <button onclick="speak()">Click vào đây !!</button>
+    <script>
+        function speak(){
+            var text = document.getElementById("id").value;
+            var speach = new SpeechSynthesisUtterance(text);
+            speechSynthesis.speak(speach);
+        }
+    </script>
+</body>
+</html>

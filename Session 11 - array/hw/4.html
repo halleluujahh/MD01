@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let arr=[1,2,3,4,5,6,7,8,9,10];
+        let capSoTong10 = (array) => {
+            let result = [];
+            for (let i = 0; i < array.length-1; i++) {
+                for (let j = i+1; j < array.length; j++){
+                    if(array[i]+array[j] == 10){
+                        result.push(["["+array[i],array[j]+"]"]);
+                    }
+                }
+            }
+            alert(`tất cả các cặp số có tổng bằng 10: ${result}`);
+        }
+        capSoTong10(arr);
+    </script>
+</body>
+</html>

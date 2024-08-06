@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .header{
+            text-align: center;
+            background-color: red;
+            width: 100%;
+            padding: 20px;
+        }
+        .header h2{
+            color: white;
+        }
+        .header .input{
+            display: flex;
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+        }
+        .header .input input{
+            flex: 2;
+            padding: 10px;
+
+        }
+        .header .input button{
+            flex: 1;
+        }
+        .list_content{
+            list-style: none;
+        }
+        li div{
+            background-color: rgb(216, 213, 213);
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 50px;
+        }
+        li div:nth-child(even){
+            background-color: rgb(201, 198, 198);
+        }
+        li div:hover{
+            color: white;
+            background-color: grey;
+        }
+        #buttonX{
+            padding: 20px;
+            width: 20px;
+        }
+        .content{
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h2>My To Do List</h2>
+        <div class="input">
+            <input id="newText" type="text" placeholder="Title...">
+            <button onclick="saveText()">Add</button>
+        </div>
+    </div>
+    <div class="main">
+        <ul class="list_content">
+        </ul>
+    </div>
+    <script>
+        let editingElement = null;
+
+        function saveText(){
+            let list = document.querySelector(".list_content");
+            let text = document.getElementById("newText").value.trim();
+            if(text.length !== 0){
+                if (editingElement) {
+                    editingElement.innerHTML = `<div><p>${text}</p><input  onclick="remove(this)" id="buttonX" type="button" value="x"></input></div>`;
+                    editingElement = null;
+                } else {
+                        list.innerHTML += `<li onclick="edit(this)"><div><p>${text}</p><input  onclick="remove(this)" id="buttonX" type="button" value="x"></input></div></li>`;
+                }
+            }
+            document.getElementById("newText").value = "";
+        }
+
+        function remove(element){
+            let selected = element.parentElement;
+            selected.remove();
+        }
+
+        let selected = null;
+        function edit(element){
+            let current = element.querySelector("li div");
+            if(selected){
+                selected.classList.remove("content");
+            }
+            current.classList.add("content");
+            selected = current;
+            document.getElementById("newText").value = element.querySelector("p").textContent;
+            editingElement = element;
+        }
+    </script>
+</body>
+</html>

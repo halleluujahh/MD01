@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            function isMinNumber(array) {
+                let min = array[0];
+                for (let index = 0; index < array.length; index++) {
+                    if (min > array[index]) {
+                        min = array[index];
+                    }
+                }
+                alert(`Số bé nhất là ${min}`);
+            }
+            let array = prompt("Nhập vào 3 số: ");
+            while (isNaN(array)) {
+                array = prompt("Hãy nhập vào các chữ số: ");
+            }
+            array1 = array.split("");
+            isMinNumber(array1);
+        </script>
+    </body>
+</html>
